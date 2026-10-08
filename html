@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#fff5fa">
+
+  <title>きょうの３つ</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <script src="./script.js" defer></script>
+
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header class="header">
+
+      <div class="header-icon">✿</div>
+
+      <h1>きょうの３つ ♡</h1>
+
+      <p>今日の小さな目標を、ひとつずつ。</p>
+
+    </header>
+
+    <nav class="tabs" aria-label="画面切り替え">
+
+      <button class="tab active" data-page="today"
+
+        aria-current="page">今日</button>
+
+      <button class="tab" data-page="history">
+
+        過去の記録
+
+      </button>
+
+      <button class="tab" data-page="settings">
+
+        データ管理
+
+      </button>
+
+    </nav>
+
+    <main>
+
+      <section id="today" class="page">
+
+        <div class="card">
+
+          <p id="todayDate" class="date"></p>
+
+          <h2>今日のやること ✨</h2>
+
+          <div class="progress-heading">
+
+            <span>今日の達成状況</span>
+
+            <strong id="progressText">0 / 0 達成</strong>
+
+          </div>
+
+          <div class="progress-track"
+
+            role="progressbar"
+
+            aria-label="タスク達成率"
+
+            aria-valuemin="0"
+
+            aria-valuemax="100"
+
+            aria-valuenow="0"
+
+            id="progressTrack">
+
+            <div id="progressBar"></div>
+
+          </div>
+
+          <ul id="taskList" class="task-list"></ul>
+
+          <p id="emptyMessage" class="empty">
+
+            今日のやることを登録しよう♪
+
+          </p>
+
+          <form id="taskForm" class="task-form">
+
+            <label for="taskInput">新しいタスク</label>
+
+            <div class="input-row">
+
+              <input
+
+                id="taskInput"
+
+                type="text"
+
+                maxlength="100"
+
+                placeholder="やることを入力..."
+
+                autocomplete="off"
+
+              >
+
+              <button id="addButton"
+
+                class="primary-button" type="submit">
+
+                追加 ＋
+
+              </button>
+
+            </div>
+
+          </form>
+
+          <p id="taskCount" class="hint"></p>
+
+        </div>
+
+      </section>
+
+      <section id="history" class="page" hidden>
+
+        <div class="card">
+
+          <h2>過去の記録 ♡</h2>
+
+          <p class="hint">
+
+            がんばった日の記録を振り返ろう
+
+          </p>
+
+          <div id="historyList"></div>
+
+        </div>
+
+      </section>
+
+      <section id="settings" class="page" hidden>
+
+        <div class="card">
+
+          <h2>データ管理 ✿</h2>
+
+          <p class="description">
+
+            記録はこのブラウザ内に自動保存されます。
+
+            大切な記録は定期的にバックアップしてください。
+
+          </p>
+
+          <h3>バックアップ</h3>
+
+          <p class="description">
+
+            記録をJSONファイルとして保存します。
+
+          </p>
+
+          <button id="backupButton"
+
+            class="primary-button wide" type="button">
+
+            バックアップを保存
+
+          </button>
+
+          <div class="separator"></div>
+
+          <h3>バックアップから復元</h3>
+
+          <p class="description">
+
+            既存の記録は残し、記録がない日付だけ
+
+            追加します。同じ日付の記録は
+
+            現在のデータを優先します。
+
+          </p>
+
+          <label for="restoreInput"
+
+            class="file-label">
+
+            JSONファイルを選択
+
+          </label>
+
+          <input
+
+            id="restoreInput"
+
+            type="file"
+
+            accept=".json,application/json"
+
+          >
+
+          <p class="warning">
+
+            復元前に現在の記録をバックアップ
+
+            してください。
+
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer>
+
+      きょうの３つ ♡ Ver.1.0
+
+    </footer>
+
+  </div>
+
+  <div id="celebration" class="celebration"
+
+    aria-live="polite" aria-atomic="true"
+
+    hidden>
+
+    <div class="celebration-card">
+
+      <div class="sparkles">✦ ✧ ✦</div>
+
+      <div class="stamp">🌸</div>
+
+      <p>できたね！ すごい ♡</p>
+
+      <div class="sparkles">✧ ✦ ✧</div>
+
+    </div>
+
+  </div>
+
+  <div id="toast" class="toast"
+
+    role="status" aria-live="polite"
+
+    hidden></div>
+
+</body>
+
+</html>
